@@ -141,7 +141,7 @@ func procedure(windowHandle : WinSDK.HWND?, message : WinSDK.UINT, firstParamete
 
 @MainActor
 public class WindowsWindow : Window {
-    static let CLASS_NAME: [WinSDK.WCHAR] = String("SWIFT_WINDOW").echoWide
+    static let CLASS_NAME: [WinSDK.WCHAR] = String("SWIFT_WINDOW").engineWide
     static let STYLE: UINT = 0; 
     static var WindowByHandle: [WinSDK.HWND? : WindowsWindow] = [:]
 
@@ -245,7 +245,7 @@ public class WindowsWindow : Window {
         self.handle = WinSDK.CreateWindowExW(
             /* dwExStyle: */ 0,
             /* lpCLASS_NAME: */ Self.CLASS_NAME,
-            /* lpWindowName: */ "title".echoWide,
+            /* lpWindowName: */ "title".engineWide,
             /* dwStyle: */ DWORD(WS_OVERLAPPEDWINDOW),
             /* X: */ rect.left,
             /* Y: */ rect.top,

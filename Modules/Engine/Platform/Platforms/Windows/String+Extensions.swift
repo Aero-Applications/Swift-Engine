@@ -4,7 +4,7 @@ import WinSDK
 
 extension Array where Array.Element == WCHAR {
 
-  public init(EchoFrom string: String) {
+  public init(engineFrom string: String) {
     self = string.withCString(encodedAs: UTF16.self) { buffer in
       Array<WCHAR>(unsafeUninitializedCapacity: string.utf16.count + 1) {
         wcscpy_s($0.baseAddress, $0.count, buffer)
@@ -17,7 +17,7 @@ extension Array where Array.Element == WCHAR {
 
 extension String {
 
-  public init(EchoFrom wide: [WCHAR]) {
+  public init(engineFrom wide: [WCHAR]) {
     self = wide.withUnsafeBufferPointer { array in
       String(decodingCString: array.baseAddress!, as: UTF16.self)
     }
@@ -27,8 +27,8 @@ extension String {
 
 extension String {
 
-  public var echoWide: [WCHAR] {
-    return Array<WCHAR>(EchoFrom: self)
+  public var engineWide: [WCHAR] {
+    return Array<WCHAR>(engineFrom: self)
   }
   
 }

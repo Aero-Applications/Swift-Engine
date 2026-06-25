@@ -214,19 +214,19 @@ public class WindowsWindow : Window {
         var windowClass: WinSDK.WNDCLASSEXW = Self.CLASS_NAME.withUnsafeBufferPointer { name in
             let cbSize: UInt32 = UInt32(MemoryLayout<WNDCLASSEX>.stride)
             let lpszClassName: UnsafePointer<WCHAR> = name.baseAddress!
-            return WinSDK.WNDCLASSEXW( // this crashes in swift 6.2
-                // cbSize: cbSize,
-                // style: Self.STYLE, 
-                // lpfnWndProc: procedure, 
-                // cbClsExtra: 0, 
-                // cbWndExtra: 0, 
-                // hInstance: hInstance, 
-                // hIcon: nil,
-                // hCursor: nil,
-                // hbrBackground: nil, 
-                // lpszMenuName: nil, 
-                // lpszClassName: lpszClassName, 
-                // hIconSm: nil
+            return WinSDK.WNDCLASSEXW( // this crashes in swift 6.5 - Dev
+                cbSize: cbSize,
+                style: Self.STYLE, 
+                lpfnWndProc: procedure, 
+                cbClsExtra: 0, 
+                cbWndExtra: 0, 
+                hInstance: hInstance, 
+                hIcon: nil,
+                hCursor: nil,
+                hbrBackground: nil, 
+                lpszMenuName: nil, 
+                lpszClassName: lpszClassName, 
+                hIconSm: nil
             );
         }
         var classID : WinSDK.ATOM = 0
